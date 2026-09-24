@@ -1,6 +1,6 @@
 # remnawave-ansible-role
 
-Ansible-роль для развёртывания стека [Remnawave](https://remna.st): панель, страница подписок, нода Xray — плюс опциональный веб-редактор конфигов [Xray Config UI Editor](https://github.com/bropines/xray-config-ui-editor) на домене панели.
+Ansible-роль для развёртывания стека [Remnawave](https://docs.rw): панель, страница подписок, нода Xray — плюс опциональный веб-редактор конфигов [Xray Config UI Editor](https://github.com/bropines/xray-config-ui-editor) на домене панели.
 
 Всё крутится в docker (docker compose) под systemd-юнитами, TLS terminates angie с автоматическим Let's Encrypt через встроенный ACME-клиент angie.
 
