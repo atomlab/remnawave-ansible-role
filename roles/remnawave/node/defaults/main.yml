@@ -1,0 +1,5 @@
+---
+
+remnanode_workdir: /opt/remnawave/node
+remnanode_release: 2.8.0
+remnanode_node_port: 2222

@@ -1,0 +1,25 @@
+ENABLE_DEBUG_LOGS=true
+
+APP_PORT={{ remnasub_port }}
+
+### Remnawave Panel URL, can be http://remnawave:3000 or https://panel.example.com
+REMNAWAVE_PANEL_URL={{ remnasub_panel_url }}
+
+META_TITLE="{{ remnasub_meta_title }}"
+META_DESCRIPTION="{{ remnasub_meta_desc }}"
+
+
+# Serve at custom root path, for example, this value can be: CUSTOM_SUB_PREFIX=sub
+# Do not place / at the start/end
+CUSTOM_SUB_PREFIX={{ remnasub_custom_sub_prefix }}
+
+
+
+# Support Marzban links
+MARZBAN_LEGACY_LINK_ENABLED=false
+MARZBAN_LEGACY_SECRET_KEY=
+REMNAWAVE_API_TOKEN={{ remnasub_remnawave_api_token }}
+
+
+# If you use "Caddy with security" addon, you can place here X-Api-Key, which will be applied to requests to Remnawave Panel.
+CADDY_AUTH_API_TOKEN=

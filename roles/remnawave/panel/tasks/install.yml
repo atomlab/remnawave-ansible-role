@@ -1,0 +1,46 @@
+---
+- name: install | ensure required dris are exists
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ remna_workdir }}/db/pg/data"
+    - "{{ remna_workdir }}/db/redis/data"
+    - "{{ remna_workdir }}/proxy"
+    - "{{ remna_workdir }}/xray-ui"
+
+- name: install | ensure proxy config exists
+  template:
+    src: proxy/angie.conf
+    dest: "{{ remna_workdir }}/proxy/angie.conf"
+    mode: "0664"
+
+- name: install | ensure docker-compose.yml is exist
+  template:
+    src: docker-compose.yml
+    dest: "{{ remna_workdir }}/docker-compose.yml"
+
+- name: install | ensure xray-ui build files exist
+  copy:
+    src: "xray-ui/{{ item }}"
+    dest: "{{ remna_workdir }}/xray-ui/{{ item }}"
+    mode: "0664"
+  loop:
+    - Dockerfile
+
+- name: install | ensure xray-ui angie config exists
+  template:
+    src: xray-ui/angie.conf
+    dest: "{{ remna_workdir }}/xray-ui/angie.conf"
+    mode: "0664"
+
+- name: install | ensure systemd unit is exist
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/remna-panel.service
+
+- name: install | ensure systemd unit is enabled
+  systemd:
+    name: remna-panel
+    daemon_reload: true
+    enabled: true

@@ -1,0 +1,13 @@
+services:
+  remnanode:
+      container_name: remnanode
+      image: remnawave/node:{{ remnanode_release }}
+      hostname: remnanode
+      restart: always
+      network_mode: host
+      env_file:
+          - .env
+      environment:
+        - NODE_PORT={{ remnanode_node_port }}
+      volumes:
+          - "/var/log/remnanode:/var/log/remnanode"

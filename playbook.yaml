@@ -1,0 +1,46 @@
+---
+# Пример: панель + страница подписок + xray-ui на одном сервере,
+# нода — на отдельном хосте.
+#
+#   ansible-playbook -i inventory.ini playbook.yaml
+#
+# inventory.ini:
+#   [panel]
+#   panel-host ansible_host=1.2.3.4
+#
+#   [nodes]
+#   node-ru ansible_host=5.6.7.8
+
+- name: Remnawave panel + subscription page + xray-ui
+  hosts: panel
+  become: true
+  roles:
+    - role: remnawave/panel
+      vars:
+        remna_workdir: /opt/remnawave/panel
+        remna_release: 3.4.4
+        remna_domain: panel.example.com
+
+        # Страница подписок на этом же сервере
+        remna_sub_same_host_enabled: true
+        remna_sub_domain: sub.example.com/api/sub
+        remna_sub_upstream: 127.0.0.1:3010
+
+        # Xray Config UI Editor: https://panel.example.com/xray-ui/
+        remna_xray_ui_release: main
+
+    - role: remnawave/sub
+      vars:
+        remnasub_panel_url: https://panel.example.com
+        remnasub_port: 3010
+        remnasub_remnawave_api_token: "change_me_api_token"
+
+# Ноды — на своих хостах, отдельным плеем
+- name: Remnawave node
+  hosts: nodes
+  become: true
+  roles:
+    - role: remnawave/node
+      vars:
+        remnanode_release: 2.8.0
+        remnanode_node_port: 2222

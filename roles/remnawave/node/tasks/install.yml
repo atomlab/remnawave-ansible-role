@@ -1,0 +1,24 @@
+---
+
+- name: install | ensure required dris are exists
+  file: 
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ remnanode_workdir }}/data"
+
+- name: install | ensure docker-compose.yml is exist
+  template:
+    src: docker-compose.yml
+    dest: "{{ remnanode_workdir }}/docker-compose.yml"
+
+- name: install | ensure systemd unit is exist
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/remna-node.service
+
+- name: install | ensure systemd unit is enabled
+  systemd:
+    name: remna-node
+    daemon_reload: yes 
+    enabled: yes

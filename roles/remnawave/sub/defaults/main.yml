@@ -1,0 +1,10 @@
+---
+
+remnasub_workdir: /opt/remnawave/sub
+remnasub_release: 8.0.0
+remnasub_panel_url: https://panel.example.com
+remnasub_port: 3010
+remnasub_custom_sub_prefix: ""
+remnasub_meta_title: "Subscription Page Title"
+remnasub_meta_desc: "Subscription Page Description"
+remnasub_remnawave_api_token: "secret"

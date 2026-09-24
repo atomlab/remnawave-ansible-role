@@ -1,0 +1,15 @@
+services:
+    remnanode:
+        container_name: remnasub
+        image: remnawave/subscription-page:{{ remnasub_release }}
+        hostname: remnawave-subscription-page
+        restart: always
+        network_mode: host
+        env_file:
+            - .env
+        ports:
+            - '127.0.0.1:{{ remnasub_port }}:{{ remnasub_port }}'
+        #volumes: 
+        #    - "{{ remnasub_workdir }}/subscription-page/frontend/index.html:/opt/app/frontend/index.html"
+        #    - "{{ remnasub_workdir }}/subscription-page/frontend/public/assets:/opt/app/frontend/assets"
+        #    - "{{ remnasub_workdir }}/app-config.json:/opt/app/frontend/assets/app-config.json"

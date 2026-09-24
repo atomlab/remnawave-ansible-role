@@ -1,0 +1,15 @@
+---
+remna_workdir: /opt/remnawave/panel
+# https://github.com/remnawave/panel
+remna_release: 3.4.4
+remna_domain: panel.example.com
+
+# Subsctiption page
+remna_sub_same_host_enabled: false
+remna_sub_domain: sub.example.com/api/sub
+remna_sub_upstream: 127.0.0.1:3010
+reman_custom_sub_prefix: ""
+
+# Xray Config UI Editor (https://github.com/bropines/xray-config-ui-editor)
+# ref репозитория: тег или ветка, из которой собирается статика
+remna_xray_ui_release: v1.19.4

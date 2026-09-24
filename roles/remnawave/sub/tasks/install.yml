@@ -1,0 +1,28 @@
+---
+- name: install | ensure required dris are exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ remnasub_workdir }}"
+
+- name: install | ensure .env file is exist
+  ansible.builtin.template:
+    src: env
+    dest: "{{ remnasub_workdir }}/.env"
+
+- name: install | ensure docker-compose.yml is exist
+  ansible.builtin.template:
+    src: docker-compose.yml
+    dest: "{{ remnasub_workdir }}/docker-compose.yml"
+
+- name: install | ensure systemd unit is exist
+  ansible.builtin.template:
+    src: service.j2
+    dest: /etc/systemd/system/remna-sub.service
+
+- name: install | ensure systemd unit is enabled
+  ansible.builtin.systemd:
+    name: remna-sub
+    daemon_reload: true
+    enabled: true
