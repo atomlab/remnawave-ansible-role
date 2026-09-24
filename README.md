@@ -53,7 +53,7 @@ sed -i "s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=$pw/" .env
 sed -i "s|^\(DATABASE_URL=\"postgresql://postgres:\)[^@\"]*\(@.*\)|\1$pw\2|" .env
 ```
 
-Затем: `systemctl start remna-panel`. Подробности про переменные окружения — в [документации Remnawave](https://remna.st/docs/install/environment-variables) и в `roles/remnawave/panel/README.md`.
+Затем: `systemctl start remna-panel`. Подробности про переменные окружения — в [документации Remnawave](https://docs.rw/docs/install/environment-variables) и в `roles/remnawave/panel/README.md`.
 
 ## Пример playbook
 
@@ -94,7 +94,7 @@ sed -i "s|^\(DATABASE_URL=\"postgresql://postgres:\)[^@\"]*\(@.*\)|\1$pw\2|" .en
 | `remnanode_release` | `2.8.0` |
 | `remnanode_node_port` | `2222` |
 
-Ноде, как и панели, нужен файл `.env` (переменные ноды — см. [документацию](https://remna.st)): роль создаёт каталог и compose, `.env` заполняется вручную в `{{ remnanode_workdir }}/.env`. Выпуск TLS-сертификатов для ноды — вне скоупа роли: подключите свои сертификаты через `volumes` в `roles/remnawave/node/templates/docker-compose.yml`.
+Ноде, как и панели, нужен файл `.env` (переменные ноды — см. [документацию](https://docs.rw)): роль создаёт каталог и compose, `.env` заполняется вручную в `{{ remnanode_workdir }}/.env`. Выпуск TLS-сертификатов для ноды — вне скоупа роли: подключите свои сертификаты через `volumes` в `roles/remnawave/node/templates/docker-compose.yml`.
 
 ## Xray Config UI Editor (`/xray-ui/`)
 
